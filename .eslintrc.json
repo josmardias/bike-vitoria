@@ -1,0 +1,24 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "babel"
+  ],
+  "extends": "airbnb-base",
+  "env": {
+    "browser": false,
+    "commonjs": true,
+    "es6": true,
+    "node": false,
+    "shared-node-browser": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "complexity": ["warn", 6],
+    "indent": ["warn", 2],
+    "linebreak-style": ["error", "unix"],
+    "no-unused-expressions": ["error", { "allowShortCircuit": true }],
+    "semi": ["error", "never"]
+  }
+}
