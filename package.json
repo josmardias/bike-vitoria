@@ -2,18 +2,22 @@
   "name": "npm-package-boilerplate",
   "version": "0.0.1",
   "description": "A boilerplate for NPM packages",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "license": "MIT",
+  "author": "Josmar Dias",
+  "homepage": "https://github.com/josmardias/npm-package-boilerplate#readme",
+  "bugs": {
+    "url": "https://github.com/josmardias/npm-package-boilerplate/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/josmardias/npm-package-boilerplate.git"
   },
-  "author": "Josmar Dias",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/josmardias/npm-package-boilerplate/issues"
+  "main": "index.js",
+  "scripts": {
+    "fixpack": "fixpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/josmardias/npm-package-boilerplate#readme"
+  "devDependencies": {
+    "fixpack": "~2.3.1"
+  }
 }
