@@ -1,9 +1,10 @@
 {
   "parser": "babel-eslint",
-  "plugins": [
-    "babel"
-  ],
   "extends": "airbnb-base",
+  "plugins": [
+    "babel",
+    "mocha"
+  ],
   "env": {
     "browser": false,
     "commonjs": true,
@@ -18,6 +19,8 @@
     "complexity": ["warn", 6],
     "indent": ["warn", 2],
     "linebreak-style": ["error", "unix"],
+    "mocha/no-exclusive-tests": "error",
+    "mocha/no-global-tests": "error",
     "no-unused-expressions": ["error", { "allowShortCircuit": true }],
     "semi": ["error", "never"]
   }
