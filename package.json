@@ -14,6 +14,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "build": "babel --ignore \\*-test.js -d dist src",
     "fixpack": "fixpack",
     "lint": "eslint .",
     "lint:fix": "npm run lint --silent -- --fix",
