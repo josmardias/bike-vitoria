@@ -9,5 +9,5 @@
   },
   "confirm": true,
   "publishTag": "latest",
-  "prePublishScript": "npm run lint:fix -s && npm run fixpack -s && npm run test -s"
+  "prePublishScript": "npm run lint:fix -s && npm run fixpack -s && npm run test -s &&  npm run build -s"
 }
