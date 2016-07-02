@@ -55,5 +55,15 @@ describe('StationsFormatter', () => {
         '\t\t(8 bikes, 4 free slots)\n'
       )
     })
+
+    it('should print empty list for unknown station', () => {
+      const unknownId = 5
+
+      const output = formatter.print(unknownId)
+
+      return expect(output).to.be.equal(
+        'Stations:\n'
+      )
+    })
   })
 })
