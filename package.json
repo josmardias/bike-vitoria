@@ -23,6 +23,7 @@
     "test": "mocha --opts scripts/mocha.opts src/**/*-test.js"
   },
   "devDependencies": {
+    "babel-cli": "~6.10.1",
     "babel-core": "~6.10.4",
     "babel-eslint": "~6.1.0",
     "babel-polyfill": "~6.9.1",
