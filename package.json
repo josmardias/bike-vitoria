@@ -1,5 +1,5 @@
 {
-  "name": "npm-package-boilerplate",
+  "name": "@josmardias/npm-package-boilerplate",
   "version": "0.0.1",
   "description": "A boilerplate for NPM packages",
   "license": "MIT",
