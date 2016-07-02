@@ -1,16 +1,16 @@
 {
-  "name": "@josmardias/npm-package-boilerplate",
-  "version": "0.0.3",
-  "description": "A boilerplate for NPM packages",
+  "name": "@josmardias/bike-vitoria",
+  "version": "0.0.1",
+  "description": "Fetch Bike Vitoria status",
   "license": "MIT",
   "author": "Josmar Dias",
-  "homepage": "https://github.com/josmardias/npm-package-boilerplate#readme",
+  "homepage": "https://github.com/josmardias/bike-vitoria#readme",
   "bugs": {
-    "url": "https://github.com/josmardias/npm-package-boilerplate/issues"
+    "url": "https://github.com/josmardias/bike-vitoria/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/josmardias/npm-package-boilerplate.git"
+    "url": "git+https://github.com/josmardias/bike-vitoria.git"
   },
   "main": "index.js",
   "scripts": {
