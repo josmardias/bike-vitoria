@@ -22,6 +22,9 @@
     "publish-please": "publish-please",
     "test": "mocha --opts scripts/mocha.opts src/**/*-test.js"
   },
+  "dependencies": {
+    "lodash": "~4.13.1"
+  },
   "devDependencies": {
     "babel-cli": "~6.10.1",
     "babel-core": "~6.10.4",

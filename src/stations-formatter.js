@@ -1,3 +1,4 @@
+import _ from 'lodash'
 
 function printStations(stations) {
   const header = 'Stations:\n'
@@ -12,10 +13,18 @@ function printStations(stations) {
 
 class StationsFormatter {
   constructor(stations) {
-    this.stations = stations
+    this.stations = stations || []
   }
 
-  print() {
+  /**
+   * Formatted output about stations status
+   * @param {string} stationId - Optional station id to filter
+   */
+  print(stationId) {
+    if (stationId) {
+      const station = _.filter(this.stations, { id: stationId })
+      return printStations(station)
+    }
     return printStations(this.stations)
   }
 }
