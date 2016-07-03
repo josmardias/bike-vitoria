@@ -23,7 +23,8 @@
     "test": "mocha --opts scripts/mocha.opts src/**/*-test.js"
   },
   "dependencies": {
-    "lodash": "~4.13.1"
+    "lodash": "~4.13.1",
+    "request-promise": "~3.0.0"
   },
   "devDependencies": {
     "babel-cli": "~6.10.1",
@@ -42,6 +43,7 @@
     "fixpack": "~2.3.1",
     "mocha": "~2.5.3",
     "mocha-clean": "~1.0.0",
+    "nock": "~8.0.0",
     "publish-please": "~2.1.4"
   }
 }
