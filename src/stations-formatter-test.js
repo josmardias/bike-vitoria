@@ -46,8 +46,18 @@ describe('StationsFormatter', () => {
       )
     })
 
-    it('should print only selected station', () => {
+    it('should print selected station passing id as number', () => {
       const output = formatter.print(17)
+
+      return expect(output).to.be.equal(
+        'Stations:\n' +
+        '\t17: SICOOB - Praia de Camburi\n' +
+        '\t\t(8 bikes, 4 free slots)\n'
+      )
+    })
+
+    it('should print selected station passing id as string', () => {
+      const output = formatter.print('17')
 
       return expect(output).to.be.equal(
         'Stations:\n' +
