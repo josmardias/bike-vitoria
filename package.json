@@ -20,9 +20,11 @@
     "lint:fix": "npm run lint --silent -- --fix",
     "prepublish": "publish-please guard",
     "publish-please": "publish-please",
+    "start": "node $npm_package_main",
     "test": "mocha --opts scripts/mocha.opts src/**/*-test.js"
   },
   "dependencies": {
+    "commander": "~2.9.0",
     "lodash": "~4.13.1",
     "request-promise": "~3.0.0"
   },
