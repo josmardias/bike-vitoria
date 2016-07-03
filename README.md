@@ -1,5 +1,9 @@
 # bike-vitoria
-Fetch Bike Vitoria status
+> Fetch Bike Vitoria stations status  
+
+This project gets information from  
+`http://www.bikevitoria.com/mapaestacao.aspx`  
+and prints stations status on the console
 
 
 # Setup:
