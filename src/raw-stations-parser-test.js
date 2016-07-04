@@ -4,7 +4,7 @@ import fs from 'fs'
 
 import rawStationsParser from './raw-stations-parser'
 
-const sampleSiteHtml = fs.readFileSync('./src/__test__/sample_mapaestacao.aspx', 'utf8')
+const sampleSiteHtml = fs.readFileSync('./src/__test__/sample_mapaestacao.aspx.txt', 'utf8')
 
 describe('rawStationsParser', () => {
   describe('#parse', () => {
