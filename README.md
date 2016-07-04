@@ -8,15 +8,6 @@ and prints stations status on the console
 # Screenshot
 ![Screenshot](/screenshot.png?raw=true "Screenshot")
 
-# Usage:
-```
-$ ./index.js -s 17
-Stations:
-	17: SICOOB - Praia de Camburi
-		(7 bikes, 5 free slots)
-
-```
-
 # Help
 ```
 $ ./index.js -h
