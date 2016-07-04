@@ -61,5 +61,16 @@ describe('App', () => {
           chalk.grey('\t\t(12 bikes, 0 free slots)\n')
         ))
     })
+
+    it('should print a single station info to the output', () => {
+      const app = new App(bikeVitoriaService, outputServiceFake)
+
+      return app.printStations(17).then(() =>
+        expect(outputServiceFake.lastOutput).to.be.deep.equal(
+          'Stations:\n' + // eslint-disable-line prefer-template
+          '\t17: SICOOB - Praia de Camburi\n' +
+          chalk.grey('\t\t(12 bikes, 0 free slots)\n')
+        ))
+    })
   })
 })
