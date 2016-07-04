@@ -5,14 +5,19 @@ This project gets information from
 `http://www.bikevitoria.com/mapaestacao.aspx`  
 and prints stations status on the console
 
+# Screenshot
+![Screenshot](/screenshot.png?raw=true "Screenshot")
 
-# Setup:
-1. Clone this repo
+# Usage:
 ```
-git clone git@github.com:josmardias/bike-vitoria.git
+$ ./index.js -s 17
+Stations:
+	17: SICOOB - Praia de Camburi
+		(7 bikes, 5 free slots)
+
 ```
 
-# Usage
+# Help
 ```
 $ ./index.js -h
 
@@ -23,13 +28,4 @@ $ ./index.js -h
     -h, --help          output usage information
     -V, --version       output the version number
     -s, --station [id]  Filter by station number
-```
-
-## Example:
-```
-$ ./index.js -s 17
-Stations:
-	17: SICOOB - Praia de Camburi
-		(7 bikes, 5 free slots)
-
 ```
