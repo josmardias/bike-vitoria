@@ -6,10 +6,10 @@ class App {
     this.outputService = outputService
   }
 
-  printStations(stationId) {
+  printStations(stationIds) {
     const formatStations = (stations) => {
       const stationsFormatter = new StationsFormatter(stations)
-      return stationsFormatter.print(stationId)
+      return stationsFormatter.print(stationIds)
     }
 
     const printToOutput = this.outputService.print.bind(this.outputService)

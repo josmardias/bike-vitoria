@@ -62,12 +62,40 @@ describe('App', () => {
         ))
     })
 
+    it('should print all stations to the output when passing an empty array of ids', () => {
+      const app = new App(bikeVitoriaService, outputServiceFake)
+
+      return app.printStations([]).then(() =>
+        expect(outputServiceFake.lastOutput).to.be.deep.equal(
+          'Stations:\n' + // eslint-disable-line prefer-template
+          '\t11: Praça do Papa\n' +
+          '\t\t(3 bikes, 9 free slots)\n' +
+          '\t12: Praça dos Desejos\n' +
+          chalk.red('\t\t(0 bikes, 12 free slots)\n') +
+          '\t17: SICOOB - Praia de Camburi\n' +
+          chalk.grey('\t\t(12 bikes, 0 free slots)\n')
+        ))
+    })
+
     it('should print a single station info to the output', () => {
       const app = new App(bikeVitoriaService, outputServiceFake)
 
       return app.printStations(17).then(() =>
         expect(outputServiceFake.lastOutput).to.be.deep.equal(
           'Stations:\n' + // eslint-disable-line prefer-template
+          '\t17: SICOOB - Praia de Camburi\n' +
+          chalk.grey('\t\t(12 bikes, 0 free slots)\n')
+        ))
+    })
+
+    it('should print multiple stations info to the output', () => {
+      const app = new App(bikeVitoriaService, outputServiceFake)
+
+      return app.printStations([12, 17]).then(() =>
+        expect(outputServiceFake.lastOutput).to.be.deep.equal(
+          'Stations:\n' + // eslint-disable-line prefer-template
+          '\t12: Praça dos Desejos\n' +
+          chalk.red('\t\t(0 bikes, 12 free slots)\n') +
           '\t17: SICOOB - Praia de Camburi\n' +
           chalk.grey('\t\t(12 bikes, 0 free slots)\n')
         ))

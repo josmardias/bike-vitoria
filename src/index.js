@@ -10,6 +10,9 @@ program
   .option('-s, --station [id]', 'Filter by station number')
   .parse(process.argv)
 
+const stationParam = program.station
+const stationIds = stationParam && stationParam.split(',')
+
 const app = appFactory.create()
 
-app.printStations(program.station)
+app.printStations(stationIds)
