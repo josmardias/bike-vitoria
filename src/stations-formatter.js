@@ -1,12 +1,30 @@
 import _ from 'lodash'
+import chalk from 'chalk'
+
+const number = n => parseInt(n, 10)
+
+const color = (bikes, free, text) => {
+  if (number(bikes) <= 0) {
+    return chalk.red(text)
+  } else if (number(free) <= 0) {
+    return chalk.gray(text)
+  }
+
+  return text
+}
 
 const printStations = (stations) => {
   const header = 'Stations:\n'
-  const addStation = (previous, station) => (
-    `${previous}` +
-    `\t${station.id}: ${station.name}\n` +
-    `\t\t(${station.bikes} bikes, ${station.free} free slots)\n`
-  )
+
+  const addStation = (previous, station) => {
+    const line = color(
+      station.bikes,
+      station.free,
+      `\t\t(${station.bikes} bikes, ${station.free} free slots)\n`
+    )
+
+    return `${previous}\t${station.id}: ${station.name}\n${line}`
+  }
 
   return stations.reduce(addStation, header)
 }
