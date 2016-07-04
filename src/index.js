@@ -1,8 +1,7 @@
 import program from 'commander'
 import process from 'process'
 
-import factory from './bike-vitoria-service-factory'
-import StationsFormatter from './stations-formatter'
+import appFactory from './app-factory'
 
 const packageJson = require('../package.json')
 
@@ -11,11 +10,6 @@ program
   .option('-s, --station [id]', 'Filter by station number')
   .parse(process.argv)
 
-const bikeVitoriaService = factory.create()
+const app = appFactory.create()
 
-bikeVitoriaService.fetch().then((stations) => {
-  const selectedStation = program.station
-  const stationsFormatter = new StationsFormatter(stations)
-  const output = stationsFormatter.print(selectedStation)
-  console.log(output)
-})
+app.printStations(program.station)
