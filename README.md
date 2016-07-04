@@ -11,10 +11,6 @@ and prints stations status on the console
 ```
 git clone git@github.com:josmardias/bike-vitoria.git
 ```
-2. Build
-```
-npm run build
-```
 
 # Usage
 ```
