@@ -10,9 +10,10 @@ const list = val => val.split(',')
 program
   .version(packageJson.version)
   .option('-s, --station [id]', 'List station(s) (comma separated) ', list)
+  .option('-A, --all', 'List all stations')
   .parse(process.argv)
 
-const stationIds = program.station
+const stationIds = (program.all && []) || program.station
 
 const app = appFactory.create()
 
