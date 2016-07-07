@@ -37,7 +37,7 @@ describe('StationsFormatter', () => {
       const output = formatter.print()
 
       return expect(output).to.be.equal(
-        'Stations:\n' +
+        'Stations:\n' + // eslint-disable-line prefer-template
         '\t11: Praça do Papa\n' +
         chalk.grey('\t\t(12 bikes, 0 free slots)\n') +
         '\t12: Praça dos Desejos\n' +

@@ -1,4 +1,4 @@
-const { describe, it } = global
+const { beforeEach, describe, it } = global
 import { expect } from 'chai'
 
 import StationDao from './station-dao'
@@ -97,7 +97,7 @@ describe('StationDao', () => {
       ])
     })
 
-    it('should return a multiple stations, but not all, by given station ids (array of numbers)', () => {
+    it('should return multiple stations (not all), using giving array of number ids', () => {
       const stationDao = new StationDao(siteFetcherFake)
 
       const stations = stationDao.find([11, 17])
@@ -118,7 +118,7 @@ describe('StationDao', () => {
       ])
     })
 
-    it('should return a multiple stations, but not all, by given station ids (array of strings)', () => {
+    it('should return multiple stations (not all), using giving array of string ids', () => {
       const stationDao = new StationDao(siteFetcherFake)
 
       const stations = stationDao.find(['11', '17'])

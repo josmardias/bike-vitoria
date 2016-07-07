@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import chalk from 'chalk'
 
 const number = n => parseInt(n, 10)
