@@ -1,7 +1,7 @@
-class OutputService {
+class PrinterStdout {
   print(text) {
     console.log(text) // eslint-disable-line no-console
   }
 }
 
-export default OutputService
+export default PrinterStdout

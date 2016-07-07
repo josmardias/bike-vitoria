@@ -1,9 +1,9 @@
 import StationsFormatter from './stations-formatter'
 
 class App {
-  constructor(stationDao, outputService) {
+  constructor(stationDao, printer) {
     this.stationDao = stationDao
-    this.outputService = outputService
+    this.printer = printer
   }
 
   printStations(stationIds) {
@@ -12,11 +12,11 @@ class App {
       return stationsFormatter.print()
     }
 
-    const printToOutput = this.outputService.print.bind(this.outputService)
+    const print = this.printer.print.bind(this.printer)
 
     return this.stationDao.find(stationIds)
       .then(formatStations)
-      .then(printToOutput)
+      .then(print)
   }
 }
 

@@ -2,16 +2,16 @@ const { beforeEach, describe, it } = global
 import { expect } from 'chai'
 import chalk from 'chalk'
 
-import OutputServiceFake from './output-service-fake'
+import PrinterInMemory from './printer-in-memory'
 import StationDaoFake from './station-dao-fake'
 import App from './app'
 
 describe('App', () => {
-  let outputServiceFake
+  let printerInMemory
   let stationDaoFake
 
   beforeEach(() => {
-    outputServiceFake = new OutputServiceFake
+    printerInMemory = new PrinterInMemory
     stationDaoFake = new StationDaoFake()
     stationDaoFake.loadFakeData([
       {
@@ -37,10 +37,10 @@ describe('App', () => {
 
   describe('#getStationsInfo', () => {
     it('should print stations info to the output', () => {
-      const app = new App(stationDaoFake, outputServiceFake)
+      const app = new App(stationDaoFake, printerInMemory)
 
       return app.printStations().then(() =>
-        expect(outputServiceFake.lastOutput).to.be.deep.equal(
+        expect(printerInMemory.lastOutput).to.be.deep.equal(
           'Stations:\n' + // eslint-disable-line prefer-template
           '\t11: Praça do Papa\n' +
           '\t\t(3 bikes, 9 free slots)\n' +
@@ -52,10 +52,10 @@ describe('App', () => {
     })
 
     it('should print all stations to the output when passing an empty array of ids', () => {
-      const app = new App(stationDaoFake, outputServiceFake)
+      const app = new App(stationDaoFake, printerInMemory)
 
       return app.printStations([]).then(() =>
-        expect(outputServiceFake.lastOutput).to.be.deep.equal(
+        expect(printerInMemory.lastOutput).to.be.deep.equal(
           'Stations:\n' + // eslint-disable-line prefer-template
           '\t11: Praça do Papa\n' +
           '\t\t(3 bikes, 9 free slots)\n' +
@@ -67,10 +67,10 @@ describe('App', () => {
     })
 
     it('should print a single station info to the output', () => {
-      const app = new App(stationDaoFake, outputServiceFake)
+      const app = new App(stationDaoFake, printerInMemory)
 
       return app.printStations(17).then(() =>
-        expect(outputServiceFake.lastOutput).to.be.deep.equal(
+        expect(printerInMemory.lastOutput).to.be.deep.equal(
           'Stations:\n' + // eslint-disable-line prefer-template
           '\t17: SICOOB - Praia de Camburi\n' +
           chalk.grey('\t\t(12 bikes, 0 free slots)\n')
@@ -78,10 +78,10 @@ describe('App', () => {
     })
 
     it('should print multiple stations info to the output', () => {
-      const app = new App(stationDaoFake, outputServiceFake)
+      const app = new App(stationDaoFake, printerInMemory)
 
       return app.printStations([12, 17]).then(() =>
-        expect(outputServiceFake.lastOutput).to.be.deep.equal(
+        expect(printerInMemory.lastOutput).to.be.deep.equal(
           'Stations:\n' + // eslint-disable-line prefer-template
           '\t12: Praça dos Desejos\n' +
           chalk.red('\t\t(0 bikes, 12 free slots)\n') +
