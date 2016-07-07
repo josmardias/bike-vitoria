@@ -1,20 +1,20 @@
 import StationsFormatter from './stations-formatter'
 
 class App {
-  constructor(bikeVitoriaService, outputService) {
-    this.bikeVitoriaService = bikeVitoriaService
+  constructor(stationDao, outputService) {
+    this.stationDao = stationDao
     this.outputService = outputService
   }
 
   printStations(stationIds) {
     const formatStations = (stations) => {
       const stationsFormatter = new StationsFormatter(stations)
-      return stationsFormatter.print(stationIds)
+      return stationsFormatter.print()
     }
 
     const printToOutput = this.outputService.print.bind(this.outputService)
 
-    return this.bikeVitoriaService.fetch()
+    return this.stationDao.find(stationIds)
       .then(formatStations)
       .then(printToOutput)
   }

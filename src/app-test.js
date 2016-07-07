@@ -3,52 +3,41 @@ import { expect } from 'chai'
 import chalk from 'chalk'
 
 import OutputServiceFake from './output-service-fake'
-import SiteFecherFake from './site-fetcher-fake'
-import BikeVitoriaService from './bike-vitoria-service'
+import StationDaoFake from './station-dao-fake'
 import App from './app'
 
 describe('App', () => {
-  let siteFetcherFake
   let outputServiceFake
-  let bikeVitoriaService
+  let stationDaoFake
 
   beforeEach(() => {
     outputServiceFake = new OutputServiceFake
-    siteFetcherFake = new SiteFecherFake
-    siteFetcherFake.shouldReply(`
-      <html>
-        <header>
-          <script>
-          //<![CDATA[
-          var beaches = [
-            ['Praça do Papa', -20.316604, -40.298205,
-              'Rua Belmiro Rodrigues da Silva, no acesso ao estacionamento da \
-              Praça do Papa / Próximo a Marinha do Brasil e ao Horto Mercado',
-              '', 'A', 'EO', '3', '3', '9', 'Est_Normal 1', 'img/estacaook.png', 11
-            ],
-            ['Praça dos Desejos', -20.303819, -40.291623,
-              'Avenida Saturnino de Brito, na Praça dos Desejos, próximo a baia ' +
-                'de estacionamento / Esquina Avenida Desembargador Alfredo Cabral',
-              '', 'A', 'EO', '0', '0', '12', 'Est_Vazia -1', 'img/estacaocheia.png', 12,
-            ],
-            ['SICOOB - Praia de Camburi', -20.282991, -40.289351,
-              'Avenida Dante Michelini, oposto ao edifício do SICOOB / Esquina \
-              Rua Comissário Otávio de Queirós',
-              '', 'A', 'EO', '12', '12', '0', 'Est_Cheia 0', 'img/estacaovazia.png', 17
-            ]
-          ];//]]>
-          </script>
-        </header>
-        <body>
-        </body>
-      </html>
-    `)
-    bikeVitoriaService = new BikeVitoriaService(siteFetcherFake)
+    stationDaoFake = new StationDaoFake()
+    stationDaoFake.loadFakeData([
+      {
+        id: 11,
+        name: 'Praça do Papa',
+        bikes: '3',
+        free: '9',
+      },
+      {
+        id: 12,
+        name: 'Praça dos Desejos',
+        bikes: '0',
+        free: '12',
+      },
+      {
+        id: 17,
+        name: 'SICOOB - Praia de Camburi',
+        bikes: '12',
+        free: '0',
+      },
+    ])
   })
 
   describe('#getStationsInfo', () => {
     it('should print stations info to the output', () => {
-      const app = new App(bikeVitoriaService, outputServiceFake)
+      const app = new App(stationDaoFake, outputServiceFake)
 
       return app.printStations().then(() =>
         expect(outputServiceFake.lastOutput).to.be.deep.equal(
@@ -63,7 +52,7 @@ describe('App', () => {
     })
 
     it('should print all stations to the output when passing an empty array of ids', () => {
-      const app = new App(bikeVitoriaService, outputServiceFake)
+      const app = new App(stationDaoFake, outputServiceFake)
 
       return app.printStations([]).then(() =>
         expect(outputServiceFake.lastOutput).to.be.deep.equal(
@@ -78,7 +67,7 @@ describe('App', () => {
     })
 
     it('should print a single station info to the output', () => {
-      const app = new App(bikeVitoriaService, outputServiceFake)
+      const app = new App(stationDaoFake, outputServiceFake)
 
       return app.printStations(17).then(() =>
         expect(outputServiceFake.lastOutput).to.be.deep.equal(
@@ -89,7 +78,7 @@ describe('App', () => {
     })
 
     it('should print multiple stations info to the output', () => {
-      const app = new App(bikeVitoriaService, outputServiceFake)
+      const app = new App(stationDaoFake, outputServiceFake)
 
       return app.printStations([12, 17]).then(() =>
         expect(outputServiceFake.lastOutput).to.be.deep.equal(
