@@ -17,6 +17,9 @@
   },
   "rules": {
     "complexity": ["warn", 6],
+    "import/no-extraneous-dependencies": ["off"],
+    "import/imports-first": ["off"],
+    "import/no-named-as-default-member": ["off"],
     "indent": ["warn", 2],
     "linebreak-style": ["error", "unix"],
     "mocha/no-exclusive-tests": "error",
