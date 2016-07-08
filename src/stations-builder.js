@@ -17,8 +17,8 @@ const toStation = (raw) => {
   }
 }
 
-const build = (rawStations) => rawStations.map(toStation)
+export const build = (rawStations) => rawStations.map(toStation)
 
-const stationsBuilder = { build }
-
-export default stationsBuilder
+export default {
+  build,
+}

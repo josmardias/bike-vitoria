@@ -1,7 +1,7 @@
 import program from 'commander'
 import process from 'process'
 
-import appFactory from './app-factory'
+import { create as createApp } from './app-factory'
 
 const packageJson = require('../package.json')
 
@@ -15,6 +15,6 @@ program
 
 const stationIds = (program.all && []) || program.station
 
-const app = appFactory.create()
+const app = createApp()
 
 app.printStations(stationIds)

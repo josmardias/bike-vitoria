@@ -1,13 +1,7 @@
 import _ from 'lodash'
 
-import stationsBuilder from './stations-builder'
-import rawStationsParser from './raw-stations-parser'
-
-const parseRawStations = (html) =>
-  rawStationsParser.parse(html)
-
-const buildStations = (rawStations) =>
-  stationsBuilder.build(rawStations)
+import { build as buildStations } from './stations-builder'
+import { parse as parseRawStations } from './raw-stations-parser'
 
 const filterById = (stations, id) =>
   _.filter(stations, { id: parseInt(id, 10) })
