@@ -6,7 +6,7 @@ import SiteFetcher from './site-fetcher'
 
 describe('SiteFetcher', () => {
   describe('#fetch', () => {
-    it('description', () => {
+    it('should fetch a given url website contents', () => {
       const siteFetcher = new SiteFetcher('http://test.com')
       const reply = '<html><body><div>example</div></body></html'
 
