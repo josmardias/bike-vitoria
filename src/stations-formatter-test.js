@@ -37,13 +37,11 @@ describe('StationsFormatter', () => {
       const output = formatter.print()
 
       return expect(output).to.be.equal(
-        'Stations:\n' + // eslint-disable-line prefer-template
-        '\t11: Praça do Papa\n' +
-        chalk.grey('\t\t(12 bikes, 0 free slots)\n') +
-        '\t12: Praça dos Desejos\n' +
-        chalk.red('\t\t(0 bikes, 12 free slots)\n') +
-        '\t17: SICOOB - Praia de Camburi\n' +
-        '\t\t(8 bikes, 4 free slots)\n'
+        '' + // eslint-disable-line prefer-template
+        'Station\tName                     \tBikes available' +
+        '\n11     \tPraça do Papa            \t' + chalk.grey('12 of 12') + '       ' +
+        '\n12     \tPraça dos Desejos        \t' + chalk.red('0 of 12') + '        ' +
+        '\n17     \tSICOOB - Praia de Camburi\t8 of 12        '
       )
     })
 
@@ -53,7 +51,7 @@ describe('StationsFormatter', () => {
       const output = emptyFormatter.print()
 
       return expect(output).to.be.equal(
-        'Stations:\n'
+        'Station\tName\tBikes available'
       )
     })
   })

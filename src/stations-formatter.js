@@ -1,4 +1,5 @@
 import chalk from 'chalk'
+import columnify from 'columnify'
 
 const number = n => parseInt(n, 10)
 
@@ -13,19 +14,23 @@ const color = (bikes, free, text) => {
 }
 
 const printStations = (stations) => {
-  const header = 'Stations:\n'
-
-  const addStation = (previous, station) => {
-    const line = color(
-      station.bikes,
-      station.free,
-      `\t\t(${station.bikes} bikes, ${station.free} free slots)\n`
-    )
-
-    return `${previous}\t${station.id}: ${station.name}\n${line}`
+  const options = {
+    columns: ['id', 'name', 'bikes'],
+    columnSplitter: '\t',
+    config: {
+      id: { headingTransform: () => 'Station' },
+      name: { headingTransform: () => 'Name' },
+      bikes: {
+        headingTransform: () => 'Bikes available',
+        dataTransform: (bikes, col, index) => {
+          const free = stations[index].free
+          const slots = parseInt(bikes, 10) + parseInt(free, 10)
+          return color(bikes, free, `${bikes} of ${slots}`)
+        },
+      },
+    },
   }
-
-  return stations.reduce(addStation, header)
+  return columnify(stations, options)
 }
 
 class StationsFormatter {

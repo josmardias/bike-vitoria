@@ -20,8 +20,8 @@ describe('App', () => {
       {
         id: 11,
         name: 'Praça do Papa',
-        bikes: '3',
-        free: '9',
+        bikes: '12',
+        free: '0',
       },
       {
         id: 12,
@@ -32,8 +32,8 @@ describe('App', () => {
       {
         id: 17,
         name: 'SICOOB - Praia de Camburi',
-        bikes: '12',
-        free: '0',
+        bikes: '8',
+        free: '4',
       },
     ])
   })
@@ -59,14 +59,8 @@ describe('App', () => {
 
       const app = new App(stationDaoFake, printerInMemory, spinner)
 
-      return app.printStations(17).then(() => {
+      return app.printStations().then(() => {
         expect(streamToString).to.not.be.empty
-
-        expect(printerInMemory.lastOutput).to.be.deep.equal(
-          'Stations:\n' + // eslint-disable-line prefer-template
-          '\t17: SICOOB - Praia de Camburi\n' +
-          chalk.grey('\t\t(12 bikes, 0 free slots)\n')
-        )
       })
     })
 
@@ -75,13 +69,11 @@ describe('App', () => {
 
       return app.printStations().then(() =>
         expect(printerInMemory.lastOutput).to.be.deep.equal(
-          'Stations:\n' + // eslint-disable-line prefer-template
-          '\t11: Praça do Papa\n' +
-          '\t\t(3 bikes, 9 free slots)\n' +
-          '\t12: Praça dos Desejos\n' +
-          chalk.red('\t\t(0 bikes, 12 free slots)\n') +
-          '\t17: SICOOB - Praia de Camburi\n' +
-          chalk.grey('\t\t(12 bikes, 0 free slots)\n')
+          '' + // eslint-disable-line prefer-template
+          'Station\tName                     \tBikes available' +
+          '\n11     \tPraça do Papa            \t' + chalk.grey('12 of 12') + '       ' +
+          '\n12     \tPraça dos Desejos        \t' + chalk.red('0 of 12') + '        ' +
+          '\n17     \tSICOOB - Praia de Camburi\t8 of 12        '
         ))
     })
 
@@ -90,13 +82,11 @@ describe('App', () => {
 
       return app.printStations([]).then(() =>
         expect(printerInMemory.lastOutput).to.be.deep.equal(
-          'Stations:\n' + // eslint-disable-line prefer-template
-          '\t11: Praça do Papa\n' +
-          '\t\t(3 bikes, 9 free slots)\n' +
-          '\t12: Praça dos Desejos\n' +
-          chalk.red('\t\t(0 bikes, 12 free slots)\n') +
-          '\t17: SICOOB - Praia de Camburi\n' +
-          chalk.grey('\t\t(12 bikes, 0 free slots)\n')
+          '' + // eslint-disable-line prefer-template
+          'Station\tName                     \tBikes available' +
+          '\n11     \tPraça do Papa            \t' + chalk.grey('12 of 12') + '       ' +
+          '\n12     \tPraça dos Desejos        \t' + chalk.red('0 of 12') + '        ' +
+          '\n17     \tSICOOB - Praia de Camburi\t8 of 12        '
         ))
     })
 
@@ -105,9 +95,8 @@ describe('App', () => {
 
       return app.printStations(17).then(() =>
         expect(printerInMemory.lastOutput).to.be.deep.equal(
-          'Stations:\n' + // eslint-disable-line prefer-template
-          '\t17: SICOOB - Praia de Camburi\n' +
-          chalk.grey('\t\t(12 bikes, 0 free slots)\n')
+          'Station\tName                     \tBikes available' +
+          '\n17     \tSICOOB - Praia de Camburi\t8 of 12        '
         ))
     })
 
@@ -116,11 +105,10 @@ describe('App', () => {
 
       return app.printStations([12, 17]).then(() =>
         expect(printerInMemory.lastOutput).to.be.deep.equal(
-          'Stations:\n' + // eslint-disable-line prefer-template
-          '\t12: Praça dos Desejos\n' +
-          chalk.red('\t\t(0 bikes, 12 free slots)\n') +
-          '\t17: SICOOB - Praia de Camburi\n' +
-          chalk.grey('\t\t(12 bikes, 0 free slots)\n')
+          '' + // eslint-disable-line prefer-template
+          'Station\tName                     \tBikes available' +
+          '\n12     \tPraça dos Desejos        \t' + chalk.red('0 of 12') + '        ' +
+          '\n17     \tSICOOB - Praia de Camburi\t8 of 12        '
         ))
     })
   })
