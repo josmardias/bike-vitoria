@@ -10,7 +10,7 @@ const color = (bikes, free, text, _chalk) => {
     return _chalk.gray(text)
   }
 
-  return text
+  return _chalk.green(text)
 }
 
 const inverse = (text, _chalk) => {

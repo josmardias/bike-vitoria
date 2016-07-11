@@ -41,7 +41,7 @@ describe('StationsFormatter', () => {
         chalk.inverse('Bikes available') +
         '\n11     \tPraça do Papa            \t' + chalk.grey('12 of 12') + '       ' +
         '\n12     \tPraça dos Desejos        \t' + chalk.red('0 of 12') + '        ' +
-        '\n17     \tSICOOB - Praia de Camburi\t8 of 12        '
+        '\n17     \tSICOOB - Praia de Camburi\t' + chalk.green('8 of 12') + '        '
       )
     })
 
