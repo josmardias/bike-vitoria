@@ -18,5 +18,6 @@ $ ./index.js -h
 
     -h, --help          output usage information
     -V, --version       output the version number
-    -s, --station [id]  Filter by station number
+    -s, --station [id]  List station(s) (comma separated)
+    -A, --all           List all stations
 ```
