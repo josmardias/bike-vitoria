@@ -12,8 +12,9 @@ class App {
       this.stationDao.find(stationIds)
 
     const formatStations = (stations) => {
-      const stationsFormatter = new StationsFormatter(stations)
-      return stationsFormatter.print()
+      const colorsEnabled = true
+      const stationsFormatter = new StationsFormatter(colorsEnabled)
+      return stationsFormatter.print(stations)
     }
 
     const print = this.printer.print.bind(this.printer)
