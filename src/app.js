@@ -1,21 +1,16 @@
-import StationsFormatter from './stations-formatter'
-
 class App {
-  constructor(stationDao, printer, loadingSpinner) {
+  constructor(stationDao, printer, loadingSpinner, stationsFormatter) {
     this.stationDao = stationDao
     this.printer = printer
     this.loadingSpinner = loadingSpinner
+    this.stationsFormatter = stationsFormatter
   }
 
   printStations(stationIds) {
     const findStations = () =>
       this.stationDao.find(stationIds)
 
-    const formatStations = (stations) => {
-      const colorsEnabled = true
-      const stationsFormatter = new StationsFormatter(colorsEnabled)
-      return stationsFormatter.print(stations)
-    }
+    const formatStations = this.stationsFormatter.print.bind(this.stationsFormatter)
 
     const print = this.printer.print.bind(this.printer)
 
