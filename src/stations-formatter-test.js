@@ -33,16 +33,14 @@ describe('StationsFormatter', () => {
 
       const output = formatter.print(stations)
 
+      /* eslint-disable prefer-template, max-len */
       return expect(output).to.be.equal(
-        '' + // eslint-disable-line prefer-template
-        chalk.inverse('Station') +
-        '\t' + chalk.inverse('Name') +
-        '                     \t' +
-        chalk.inverse('Bikes available') +
-        '\n11     \tPraça do Papa            \t' + chalk.grey('12 of 12') + '       ' +
-        '\n12     \tPraça dos Desejos        \t' + chalk.red('0 of 12') + '        ' +
+        chalk.inverse('Station') + '\t' + chalk.inverse('Name') + '                     \t' + chalk.inverse('Bikes available') +
+        '\n' + chalk.grey('11') + '     \t' + chalk.grey('Praça do Papa') + '            \t' + chalk.grey('12 of 12') + '       ' +
+        '\n' + chalk.red('12') + '     \t' + chalk.red('Praça dos Desejos') + '        \t' + chalk.red('0 of 12') + '        ' +
         '\n17     \tSICOOB - Praia de Camburi\t' + chalk.green('8 of 12') + '        '
       )
+      /* eslint-enable */
     })
 
     it('should print all stations without colors', () => {

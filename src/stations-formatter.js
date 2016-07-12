@@ -18,12 +18,31 @@ const inverse = (text, _chalk) => {
 }
 
 const printStations = (stations, _chalk) => {
+  const colorDataTransform = (data, col, index) => {
+    const bikes = stations[index].bikes
+    const free = stations[index].free
+
+    if (number(bikes) <= 0) {
+      return _chalk.red(data)
+    } else if (number(free) <= 0) {
+      return _chalk.gray(data)
+    }
+
+    return data
+  }
+
   const options = {
     columns: ['id', 'name', 'bikes'],
     columnSplitter: '\t',
     config: {
-      id: { headingTransform: () => inverse('Station', _chalk) },
-      name: { headingTransform: () => _chalk.inverse('Name') },
+      id: {
+        headingTransform: () => inverse('Station', _chalk),
+        dataTransform: colorDataTransform,
+      },
+      name: {
+        headingTransform: () => _chalk.inverse('Name'),
+        dataTransform: colorDataTransform,
+      },
       bikes: {
         headingTransform: () => inverse('Bikes available', _chalk),
         dataTransform: (bikes, col, index) => {
