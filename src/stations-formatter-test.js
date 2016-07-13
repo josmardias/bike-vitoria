@@ -36,7 +36,7 @@ describe('StationsFormatter', () => {
       /* eslint-disable prefer-template, max-len */
       return expect(output).to.be.equal(
         chalk.inverse('Station') + '\t' + chalk.inverse('Name') + '                     \t' + chalk.inverse('Bikes available') +
-        '\n' + chalk.grey('11') + '     \t' + chalk.grey('Praça do Papa') + '            \t' + chalk.grey('12 of 12') + '       ' +
+        '\n' + chalk.magenta('11') + '     \t' + chalk.magenta('Praça do Papa') + '            \t' + chalk.magenta('12 of 12') + '       ' +
         '\n' + chalk.red('12') + '     \t' + chalk.red('Praça dos Desejos') + '        \t' + chalk.red('00 of 12') + '       ' +
         '\n17     \tSICOOB - Praia de Camburi\t' + chalk.green('08 of 12') + '       '
       )

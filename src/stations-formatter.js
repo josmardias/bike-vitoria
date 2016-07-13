@@ -8,7 +8,7 @@ const color = (bikes, free, text, _chalk) => {
   if (number(bikes) <= 0) {
     return _chalk.red(text)
   } else if (number(free) <= 0) {
-    return _chalk.gray(text)
+    return _chalk.magenta(text)
   }
 
   return _chalk.green(text)
@@ -26,7 +26,7 @@ const printStations = (stations, _chalk) => {
     if (number(bikes) <= 0) {
       return _chalk.red(data)
     } else if (number(free) <= 0) {
-      return _chalk.gray(data)
+      return _chalk.magenta(data)
     }
 
     return data
