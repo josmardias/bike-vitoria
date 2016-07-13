@@ -63,7 +63,7 @@ describe('App', () => {
       const app = new App(stationDaoFake, printerInMemory, spinner, stationsFormatter)
 
       return app.printStations().then(() => {
-        expect(streamToString).to.not.be.empty
+        expect(streamToString).to.not.be.empty // eslint-disable-line no-unused-expressions
       })
     })
 

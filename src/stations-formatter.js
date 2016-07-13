@@ -4,29 +4,28 @@ import _ from 'lodash'
 
 const number = n => parseInt(n, 10)
 
-const color = (bikes, free, text, _chalk) => {
+const color = (bikes, free, text, chalkObj) => {
   if (number(bikes) <= 0) {
-    return _chalk.red(text)
+    return chalkObj.red(text)
   } else if (number(free) <= 0) {
-    return _chalk.magenta(text)
+    return chalkObj.magenta(text)
   }
 
-  return _chalk.green(text)
+  return chalkObj.green(text)
 }
 
-const inverse = (text, _chalk) => {
-  return _chalk.inverse(text)
-}
+const inverse = (text, chalkObj) =>
+  chalkObj.inverse(text)
 
-const printStations = (stations, _chalk) => {
+const printStations = (stations, chalkObj) => {
   const colorDataTransform = (data, col, index) => {
     const bikes = stations[index].bikes
     const free = stations[index].free
 
     if (number(bikes) <= 0) {
-      return _chalk.red(data)
+      return chalkObj.red(data)
     } else if (number(free) <= 0) {
-      return _chalk.magenta(data)
+      return chalkObj.magenta(data)
     }
 
     return data
@@ -37,21 +36,21 @@ const printStations = (stations, _chalk) => {
     columnSplitter: '\t',
     config: {
       id: {
-        headingTransform: () => inverse('Station', _chalk),
+        headingTransform: () => inverse('Station', chalkObj),
         dataTransform: colorDataTransform,
       },
       name: {
-        headingTransform: () => _chalk.inverse('Name'),
+        headingTransform: () => chalkObj.inverse('Name'),
         dataTransform: colorDataTransform,
       },
       bikes: {
-        headingTransform: () => inverse('Bikes available', _chalk),
+        headingTransform: () => inverse('Bikes available', chalkObj),
         dataTransform: (bikes, col, index) => {
           const free = stations[index].free
           const slots = parseInt(bikes, 10) + parseInt(free, 10)
           const pad = (text) => _.padStart(text, 2, '0')
           const text = `${pad(bikes)} of ${pad(slots)}`
-          return color(bikes, free, text, _chalk)
+          return color(bikes, free, text, chalkObj)
         },
       },
     },
@@ -69,8 +68,8 @@ class StationsFormatter {
    * @param {string} stationIds - Optional station id's to filter
    */
   print(stations = []) {
-    const _chalk = this.chalk
-    return printStations(stations, _chalk)
+    const chalkObj = this.chalk
+    return printStations(stations, chalkObj)
   }
 }
 
