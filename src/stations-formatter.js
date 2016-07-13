@@ -1,5 +1,6 @@
 import chalk from 'chalk'
 import columnify from 'columnify'
+import _ from 'lodash'
 
 const number = n => parseInt(n, 10)
 
@@ -48,7 +49,9 @@ const printStations = (stations, _chalk) => {
         dataTransform: (bikes, col, index) => {
           const free = stations[index].free
           const slots = parseInt(bikes, 10) + parseInt(free, 10)
-          return color(bikes, free, `${bikes} of ${slots}`, _chalk)
+          const pad = (text) => _.padStart(text, 2, '0')
+          const text = `${pad(bikes)} of ${pad(slots)}`
+          return color(bikes, free, text, _chalk)
         },
       },
     },

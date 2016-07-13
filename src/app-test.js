@@ -75,8 +75,8 @@ describe('App', () => {
           '' + // eslint-disable-line prefer-template
           'Station\tName                     \tBikes available' +
           '\n11     \tPraça do Papa            \t12 of 12       ' +
-          '\n12     \tPraça dos Desejos        \t0 of 12        ' +
-          '\n17     \tSICOOB - Praia de Camburi\t8 of 12        '
+          '\n12     \tPraça dos Desejos        \t00 of 12       ' +
+          '\n17     \tSICOOB - Praia de Camburi\t08 of 12       '
         ))
     })
 
@@ -88,8 +88,8 @@ describe('App', () => {
           '' + // eslint-disable-line prefer-template
           'Station\tName                     \tBikes available' +
           '\n11     \tPraça do Papa            \t12 of 12       ' +
-          '\n12     \tPraça dos Desejos        \t0 of 12        ' +
-          '\n17     \tSICOOB - Praia de Camburi\t8 of 12        '
+          '\n12     \tPraça dos Desejos        \t00 of 12       ' +
+          '\n17     \tSICOOB - Praia de Camburi\t08 of 12       '
         ))
     })
 
@@ -99,7 +99,7 @@ describe('App', () => {
       return app.printStations(17).then(() =>
         expect(printerInMemory.lastOutput).to.be.deep.equal(
           'Station\tName                     \tBikes available' +
-          '\n17     \tSICOOB - Praia de Camburi\t8 of 12        '
+          '\n17     \tSICOOB - Praia de Camburi\t08 of 12       '
         ))
     })
 
@@ -110,8 +110,8 @@ describe('App', () => {
         expect(printerInMemory.lastOutput).to.be.deep.equal(
           '' + // eslint-disable-line prefer-template
           'Station\tName                     \tBikes available' +
-          '\n12     \tPraça dos Desejos        \t0 of 12        ' +
-          '\n17     \tSICOOB - Praia de Camburi\t8 of 12        '
+          '\n12     \tPraça dos Desejos        \t00 of 12       ' +
+          '\n17     \tSICOOB - Praia de Camburi\t08 of 12       '
         ))
     })
   })
