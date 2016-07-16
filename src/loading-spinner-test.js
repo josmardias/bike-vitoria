@@ -1,24 +1,24 @@
 const { describe, it } = global
 import { expect } from 'chai'
-import { Writable as WritableStream } from 'stream'
+import { PassThrough as PassThroughStream } from 'stream'
+import getStream from 'get-stream'
 
 import LoadingSpinner from './loading-spinner'
+
+const getPassThroughStream = () => {
+  const noop = () => {}
+  const stream = new PassThroughStream()
+  stream.isTTY = true
+  stream.clearLine = noop
+  stream.cursorTo = noop
+
+  return stream
+}
 
 describe('LoadingSpinner', () => {
   describe('#show / #hide', () => {
     it('should print a loading spinner', () => {
-      const noop = () => {}
-      let streamToString = ''
-      const stream = new WritableStream({
-        write(chunk, encoding, callback) {
-          streamToString += chunk.toString()
-          callback()
-        },
-      })
-      stream.isTTY = true
-      stream.clearLine = noop
-      stream.cursorTo = noop
-
+      const stream = getPassThroughStream()
       const spinner = new LoadingSpinner({
         stream,
         color: false,
@@ -26,8 +26,11 @@ describe('LoadingSpinner', () => {
 
       spinner.show()
       spinner.hide()
+      stream.end()
 
-      return expect(streamToString).to.be.equal('⠋ Loading...')
+      return getStream(stream).then((output) =>
+        expect(output).to.be.equal('⠋ Loading...')
+      )
     })
   })
 

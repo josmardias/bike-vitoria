@@ -1,6 +1,7 @@
 const { beforeEach, describe, it } = global
 import { expect } from 'chai'
-import { Writable as WritableStream } from 'stream'
+import { PassThrough as PassThroughStream } from 'stream'
+import getStream from 'get-stream'
 
 import PrinterInMemory from './printer-in-memory'
 import StationDaoFake from './station-dao-fake'
@@ -43,14 +44,8 @@ describe('App', () => {
 
   describe('#getStationsInfo', () => {
     it('should print a loading spinner', () => {
+      const stream = new PassThroughStream()
       const noop = () => {}
-      let streamToString = ''
-      const stream = new WritableStream({
-        write(chunk, encoding, callback) {
-          streamToString += chunk.toString()
-          callback()
-        },
-      })
       stream.isTTY = true
       stream.clearLine = noop
       stream.cursorTo = noop
@@ -61,10 +56,14 @@ describe('App', () => {
       })
 
       const app = new App(stationDaoFake, printerInMemory, spinner, stationsFormatter)
+      const printPromise = app.printStations()
 
-      return app.printStations().then(() => {
-        expect(streamToString).to.not.be.empty // eslint-disable-line no-unused-expressions
-      })
+      return printPromise.then(() => {
+        stream.end()
+        return getStream(stream)
+      }).then((output) =>
+        expect(output).to.not.be.empty // eslint-disable-line no-unused-expressions
+      )
     })
 
     it('should print stations info to the output', () => {
