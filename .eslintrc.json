@@ -17,7 +17,10 @@
   },
   "rules": {
     "complexity": ["warn", 6],
-    "import/no-extraneous-dependencies": ["off"],
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": true,
+      "optionalDependencies": true
+    }],
     "import/imports-first": ["off"],
     "import/no-named-as-default-member": ["off"],
     "indent": ["warn", 2],
