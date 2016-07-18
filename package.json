@@ -17,7 +17,9 @@
     "fixpack": "fixpack",
     "lint": "eslint .",
     "lint:fix": "npm run lint --silent -- --fix",
+    "preinstall": "command -v nvc >/dev/null 2>&1; if [ $? -eq 0 ]; then nvc; fi",
     "prepublish": "publish-please guard",
+    "pretest": "nvc",
     "publish-please": "publish-please",
     "start": "node $npm_package_main",
     "test": "mocha --opts scripts/mocha.opts src/**/*-test.js",
@@ -51,6 +53,11 @@
     "mocha-clean": "~1.0.0",
     "nock": "~8.0.0",
     "node-inspector": "~0.12.8",
+    "node-version-checker": "~2.0.0",
     "publish-please": "~2.1.4"
+  },
+  "engines": {
+    "node": ">= 6",
+    "npm": ">= 3"
   }
 }
