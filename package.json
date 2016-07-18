@@ -26,7 +26,7 @@
     "test:debug": "node-debug _mocha --opts scripts/mocha.opts src/**/*-test.js"
   },
   "dependencies": {
-    "babel-preset-es2015": "~6.9.0",
+    "babel-preset-es2015-node": "~6.1.0",
     "babel-register": "~6.9.0",
     "chalk": "~1.1.3",
     "columnify": "~1.5.4",
