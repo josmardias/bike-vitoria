@@ -27,6 +27,7 @@
     "linebreak-style": ["error", "unix"],
     "mocha/no-exclusive-tests": "error",
     "mocha/no-global-tests": "error",
+    "new-parens": ["off"],
     "no-multi-str": ["off"],
     "no-unused-expressions": ["error", { "allowShortCircuit": true }],
     "semi": ["error", "never"]
