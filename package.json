@@ -23,6 +23,7 @@
     "publish-please": "publish-please",
     "start": "node $npm_package_main",
     "test": "mocha --opts scripts/mocha.opts src/**/*-test.js",
+    "test:watch": "npm run test -s -- --reporter min --watch",
     "test:debug": "node-debug _mocha --opts scripts/mocha.opts src/**/*-test.js"
   },
   "dependencies": {
