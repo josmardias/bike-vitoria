@@ -1,7 +1,8 @@
-const { describe, it } = global
 import { expect } from 'chai'
 
 import stationsBuilder from './stations-builder'
+
+const { describe, it } = global
 
 describe('stationsBuilder', () => {
   const rawStations = [

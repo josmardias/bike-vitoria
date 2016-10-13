@@ -1,8 +1,9 @@
-const { describe, it } = global
 import { expect } from 'chai'
 import chalk from 'chalk'
 
 import StationsFormatter from './stations-formatter'
+
+const { describe, it } = global
 
 describe('StationsFormatter', () => {
   const stations = [

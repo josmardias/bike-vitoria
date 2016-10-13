@@ -1,8 +1,9 @@
-const { describe, it } = global
 import { expect } from 'chai'
 import fs from 'fs'
 
 import rawStationsParser from './raw-stations-parser'
+
+const { describe, it } = global
 
 const sampleSiteHtml = fs.readFileSync('./src/__test__/sample_mapaestacao.aspx.txt', 'utf8')
 

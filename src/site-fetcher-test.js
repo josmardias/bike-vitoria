@@ -1,8 +1,9 @@
-const { describe, it } = global
 import { expect } from 'chai'
 import nock from 'nock'
 
 import SiteFetcher from './site-fetcher'
+
+const { describe, it } = global
 
 describe('SiteFetcher', () => {
   describe('#fetch', () => {

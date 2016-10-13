@@ -1,8 +1,9 @@
-const { beforeEach, describe, it } = global
 import { expect } from 'chai'
 
 import StationDao from './station-dao'
 import SiteFetcherFake from './site-fetcher-fake'
+
+const { beforeEach, describe, it } = global
 
 describe('StationDao', () => {
   let siteFetcherFake

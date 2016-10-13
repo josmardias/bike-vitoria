@@ -1,9 +1,10 @@
-const { describe, it } = global
 import { expect } from 'chai'
 import { PassThrough as PassThroughStream } from 'stream'
 import getStream from 'get-stream'
 
 import LoadingSpinner from './loading-spinner'
+
+const { describe, it } = global
 
 const getPassThroughStream = () => {
   const noop = () => {}

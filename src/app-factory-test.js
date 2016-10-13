@@ -1,8 +1,9 @@
-const { describe, it } = global
 import { expect } from 'chai'
 
 import factory from './app-factory'
 import App from './app'
+
+const { describe, it } = global
 
 describe('app-factory', () => {
   describe('#create', () => {

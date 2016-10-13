@@ -1,4 +1,3 @@
-const { beforeEach, describe, it } = global
 import { expect } from 'chai'
 import { PassThrough as PassThroughStream } from 'stream'
 import getStream from 'get-stream'
@@ -8,6 +7,8 @@ import StationDaoFake from './station-dao-fake'
 import LoadingSpinner from './loading-spinner'
 import StationsFormatter from './stations-formatter'
 import App from './app'
+
+const { beforeEach, describe, it } = global
 
 describe('App', () => {
   const spinnerFake = { show() {}, hide() {} }
