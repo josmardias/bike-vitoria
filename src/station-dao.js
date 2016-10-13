@@ -7,8 +7,8 @@ const filterById = (stations, id) =>
   _.filter(stations, { id: parseInt(id, 10) })
 
 const filterByIds = (stations, ids) => {
-  const idsAsNumbers = _.map(ids, (n) => parseInt(n, 10))
-  return _.filter(stations, (st) => _.includes(idsAsNumbers, st.id))
+  const idsAsNumbers = _.map(ids, n => parseInt(n, 10))
+  return _.filter(stations, st => _.includes(idsAsNumbers, st.id))
 }
 
 const filterStations = (stations, stationIds) => {
@@ -40,7 +40,7 @@ class StationDao {
   }
 
   find(stationIds) {
-    const filter = (stations) => filterStations(stations, stationIds)
+    const filter = stations => filterStations(stations, stationIds)
 
     return this.fetch()
       .then(filter)

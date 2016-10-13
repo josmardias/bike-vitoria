@@ -48,7 +48,7 @@ const printStations = (stations, chalkObj) => {
         dataTransform: (bikes, col, index) => {
           const free = stations[index].free
           const slots = parseInt(bikes, 10) + parseInt(free, 10)
-          const pad = (text) => _.padStart(text, 2, '0')
+          const pad = text => _.padStart(text, 2, '0')
           const text = `${pad(bikes)} of ${pad(slots)}`
           return color(bikes, free, text, chalkObj)
         },

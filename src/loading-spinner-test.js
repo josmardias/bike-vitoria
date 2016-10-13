@@ -28,7 +28,7 @@ describe('LoadingSpinner', () => {
       spinner.hide()
       stream.end()
 
-      return getStream(stream).then((output) =>
+      return getStream(stream).then(output =>
         expect(output).to.be.equal('⠋ Loading...')
       )
     })

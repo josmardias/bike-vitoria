@@ -61,7 +61,7 @@ describe('App', () => {
       return printPromise.then(() => {
         stream.end()
         return getStream(stream)
-      }).then((output) =>
+      }).then(output =>
         expect(output).to.not.be.empty // eslint-disable-line no-unused-expressions
       )
     })
