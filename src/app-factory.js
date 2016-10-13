@@ -12,7 +12,7 @@ export const create = () => {
 
   const siteFetcher = new SiteFetcher(bikeVitoriaUrl)
   const stationDao = new StationDao(siteFetcher)
-  const printer = new PrinterStdout
+  const printer = new PrinterStdout(console) // eslint-disable-line no-console
   const spinner = new LoadingSpinner({
     stream: writeStream,
   })

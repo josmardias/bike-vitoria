@@ -1,6 +1,11 @@
 class PrinterStdout {
+
+  constructor(logger) {
+    this.logger = logger
+  }
+
   print(text) {
-    console.log(text) // eslint-disable-line no-console
+    this.logger.log(text)
   }
 }
 
