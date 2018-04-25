@@ -18,7 +18,7 @@
     "lint": "eslint .",
     "lint:fix": "npm run lint --silent -- --fix",
     "preinstall": "command -v nvc >/dev/null 2>&1; if [ $? -eq 0 ]; then nvc; fi",
-    "prepublish": "publish-please guard",
+    "prepare": "publish-please guard",
     "pretest": "nvc",
     "publish-please": "publish-please",
     "start": "node $npm_package_main",
